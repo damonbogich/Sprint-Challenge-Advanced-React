@@ -1,9 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('App renders without crashing', () => {
+  const component = render(<App />);
 });
+
+test("Title is rendered", () => {
+  const {getByTestId} = render(<App />);
+
+  getByTestId(/womenSoccer/i);
+  
+});
+
+// test("Title text is rendered", () => {
+//   const container = render(<App />);
+
+//   container.getByText("Women's");
+// })
+
+
